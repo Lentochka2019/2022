@@ -8,6 +8,8 @@ namespace my_p1
         {
             Console.WriteLine("Hello World!");
             /*fkgkgkdgfkjdfklj*/
+
+            /*ророрроо*/
         }
     }
 }
