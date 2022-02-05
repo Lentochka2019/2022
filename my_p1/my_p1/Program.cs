@@ -21,7 +21,7 @@ namespace my_p1
                 Console.WriteLine($"Найбiльше значення: {maxVar}");
             Console.WriteLine($"Рахуємо приклад при значеннi: {n1}");
             var n3=-6*Math.Pow(n1,3)+5*Math.Pow(n1,2)-10*n1+15;
-            Console.WriteLine($"-6*x^3+5*x^2-10*x+15= {n3}");
+            Console.WriteLine($"-6*x^3+5*x^2-10*x+15= {n3}");*/
         }
         }
     }
