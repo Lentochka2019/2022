@@ -7,6 +7,7 @@ namespace my_p1
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            /*Console.ReadKey();*/
             /*fkgkgkdgfkjdfklj*/
 
             /*ророрроо*/
