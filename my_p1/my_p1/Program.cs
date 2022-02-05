@@ -9,9 +9,36 @@ namespace my_p1
             static void Main(string[] args)
             {
 
-                // int n1 = 5;
-                //int n2 = 10;
-                Console.Write("Значення1: ");
+                 int a = 2;
+                int b = 3;
+            
+            short s = 300;
+            int us = -232322;
+            int i = 5;
+            int result = ++i + i++;
+            Console.WriteLine(result);
+            bool isTrue= false;
+            Console.WriteLine(!isTrue);/*true*/
+            int m = a * b;
+            Console.WriteLine(m);/*6*/
+
+            short biigInt = 32000;
+            short biigInt1 = 32000;
+            Console.WriteLine(biigInt + biigInt1);
+           unchecked
+            {
+                short result1 = (short)(biigInt + short.Parse("32000"));
+            }
+            Console.WriteLine(a << b);/*16*/
+            //2- 00000010=> 00010000
+
+            var now = DateTime.Now;
+            Console.WriteLine(now);/**/
+            Console.WriteLine(now.Year - 1);/**2021*/
+            var yesterday = now.AddDays(-1);/*4*/
+
+
+              /*  Console.Write("Значення1: ");
                 int n1 = Convert.ToInt32(Console.ReadLine());
 
                 Console.Write("Значення2: ");
