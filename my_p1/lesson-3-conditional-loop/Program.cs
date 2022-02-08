@@ -35,10 +35,10 @@ namespace lesson_3_conditional_loop
                     Console.Write($"{sum}");
                 }
                 else
-                    Console.WriteLine("Помилка коли вводимо Y");
+                    Console.WriteLine("Помилка коли вводимо Y!");
             }
             else
-                Console.WriteLine("Помилка коли вводимо X");
+                Console.WriteLine("Помилка коли вводимо X!");
         }
     }
 }

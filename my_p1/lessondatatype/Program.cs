@@ -8,7 +8,7 @@ namespace lessondatatype
         {
             int n1 = 2;
             int n2 = 6;
-            Console.WriteLine($"Дано значення: {n1} та {n2}");
+            Console.WriteLine($"Надані значення: {n1} та {n2}");
             int maxVar = Math.Max(n1, n2);
             Console.WriteLine($"Найбiльше значення: {maxVar}");
             Console.WriteLine($"Рахуємо приклад при значеннi: {n1}");
