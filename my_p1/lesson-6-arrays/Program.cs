@@ -4,11 +4,15 @@ namespace lesson_6_arrays
 {
     internal class Program
     {
+        
         static void Main(string[] args)
         {
-            int[] array = new int[] { 6, 8, 1, 4, 5 };
+             int[] array = new int[] { 6, 8, 1, 4, 5 };
             int[] array1 = new int[] { 6, 2, 6, 4, 5 };
             int[] array2 = new int[] { 6, 2, 6, 4, 5 };
+
+
+            int[] array3 = new int[] { 6, 2, 10, 4, 5 };
 
 
             Console.Write("Array: ");
@@ -36,7 +40,22 @@ namespace lesson_6_arrays
                 Console.Write($" {item},");
             }
             Console.WriteLine("\n");
+            Console.WriteLine("Array3:");
+            for (int i = 0; i < array3.Length; i++)
+            {
+                Console.WriteLine(array3[i] + " ");
+            }
+            Console.WriteLine("Select sort order (ask or desk) ");
+            string methodSort = Console.ReadLine();
+          
+            
+           
+            array3 =SortAskDesk(array3,methodSort);
 
+            foreach (int item in array3)
+            {
+                Console.Write($" {item},");
+            }
 
         }
         static int[] InitArray(int[] array)
@@ -103,6 +122,46 @@ namespace lesson_6_arrays
                     j = j - 1;
                 }
                 array[j + 1] = key;
+            }
+
+            return array;
+        }
+
+        /**/
+        static void swap( ref int firstEl, ref int secondEl)
+        {
+            int temp;
+            temp = firstEl;
+            firstEl = secondEl;
+            secondEl = temp;
+
+        }
+
+        static int[] SortAskDesk(int[] array, string method_sort)
+        {if(method_sort!="ask" && method_sort!="desk") { Console.WriteLine("Select sort order (ask or desk) ");  method_sort = Console.ReadLine(); }
+            
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (method_sort == "ask")
+                    {
+                        if (array[i] > array[j])
+                        {
+
+                            swap(ref array[i], ref array[j]);
+                        }
+                    }
+                    else if (method_sort == "desk")
+                    {
+                        if (array[i] < array[j])
+                        {
+                            swap(ref array[i], ref array[j]);
+                        }
+
+                    }
+                    else method_sort = "ask";
+                }
             }
 
             return array;
