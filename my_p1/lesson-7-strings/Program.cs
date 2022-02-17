@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace lesson_7_strings
 {
@@ -7,50 +6,108 @@ namespace lesson_7_strings
     {
         static void Main(string[] args)
         {
-            string name = "Serhii";
-            string hisName = "Alex";
-            Console.WriteLine("Hello " + name);
-            Console.WriteLine(string.Format("Hello {0} and {1}", name, hisName));//hello Serhii and Alex
+            Console.WriteLine("Method returns true if 2 strings are equal, otherwise false");
+            Console.WriteLine("Input first string: ");
 
-            var hello = $"Hello {name} and {hisName}";
+            string str1 = Console.ReadLine();
 
-            Console.WriteLine(hello.Contains("hii")); //true
+            Console.WriteLine("Input second string: ");
 
-            var helloPlaceholder = "Hello ";
-            var index = helloPlaceholder.IndexOf(' ');//5
+            string str2 = Console.ReadLine();
 
-            Console.WriteLine(helloPlaceholder.Insert(index + 1, name)); //hello Serhii
-            Console.WriteLine($"hello {name}".Replace(name, hisName));//hello Alex
+            Console.WriteLine(Compare(str1, str2));
+            Console.WriteLine("------------------------------------------------------------------------------------------");
+            Console.WriteLine("Method returns number of alphabetic chars in first string, digits and another special characters");
 
-            Console.WriteLine(hello.PadLeft(40));//добавили пробелы
-            Console.WriteLine(hello.PadLeft(40).Trim());//убрали пробелы
-            Console.WriteLine(hello.ToLower());//перевод в нижний регистр
-            Console.WriteLine(hello.ToUpper());//перевод в верхнийрегистр
+            Analyze(str1, out int num1, out int num2, out int num3);
+            Console.WriteLine($"Alphabetic chars: {num1}");
+            Console.WriteLine($"Digits: {num2}");
+            Console.WriteLine($"Another special characters: {num3}");
+            Console.WriteLine("-------------------------------------------------------------------------------------------");
+            Console.WriteLine("Method returns string sorted in alphabetical order");
+            Console.WriteLine("Input string: ");
 
-            Console.WriteLine(string.Compare("abc","bdc"));//сортировка строк
+            string str3 = Console.ReadLine();
+            Console.WriteLine(Sort(str3));
 
-            Console.WriteLine("Hello " + name);
+            Console.ReadKey();
+        }
+        static bool Compare(string str1, string str2)
+        {
+            bool rez = (str1 == str2) ? true : false;
+            return rez;
+        }
 
-            var emptyString = string.Empty;
-            const int N = 1000;
-
-           
-
-            for (int i = 0; i < N;i++)
+        static int Analyze(string str, out int numAlp, out int numStr, out int numSpecChar)
+        {
+            numAlp = 0;
+            numStr = 0;
+            numSpecChar = 0;
+            for (int i = 0; i < str.Length; i++)
             {
-                emptyString += $" {i}";
+                if (Char.IsLetter(str[i]))
+                {
+                    numAlp++;
+                }
+                else if (Char.IsDigit(str[i]))
+                {
+                    numStr++;
+                }
+                else
+                {
+                    numSpecChar++;
+                }
+            }
+            return 0;
+
+        }
+        static string Sort(string str)
+        {
+            char temp;
+            string strLow = str.ToLower();
+            char[] charstr = strLow.ToCharArray();
+            for (int i = 0; i < charstr.Length - 1; i++)
+            {
+
+                for (int j = i + 1; j < charstr.Length; j++)
+                {
+
+                    if (charstr[i] > charstr[j])
+                    {
+                        temp = charstr[i];
+                        charstr[i] = charstr[j];
+                        charstr[j] = temp;
+                    }
+
+                }
             }
 
-            var stringBuilder = new StringBuilder();
-            for (int i = 0; i < N; i++)
+            return new string(charstr);
+        }
+        static string Elem(string str)
+        {
+            string text = "пппприииветт"; //Входная строка
+            int Count = 0; //Количество букв
+            char PreCh = '\\'; //Предыдущий символ
+            foreach (char ch in text) //Для каждого сивола в строке - опорный символ
             {
-                stringBuilder.AppendFormat(" {0}",i);
+                foreach (char cha in text) //Проходим по всем символам
+                {
+                    if (cha != PreCh && cha == ch) //И если этот символ не равен предыдущему символу, и одновременно опорному символу
+                    {
+                        Count++; //Увеличиваем количество на 1
+                    }
+                }
+
+                if (Count != 0) //Если количество не равно 0
+                {
+                    Console.WriteLine("Количество символов {0} = {1}", ch, Count); //Выводим опорный символ и количество его в строке
+                }
+
+                Count = 0; //Обнуляем количество
+                PreCh = ch; //Записываем в предыдущий символ текущий опорный символ
             }
-
-            Console.WriteLine(stringBuilder.ToString());//віделяет память тольк тогда, когда добавляется єлемент строки
-            Console.WriteLine(emptyString);//сразу віделяет большой обїем памяти
-
-
+            return text;
         }
     }
 }
