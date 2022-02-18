@@ -30,6 +30,13 @@ namespace lesson_7_strings
             string str3 = Console.ReadLine();
             Console.WriteLine(Sort(str3));
 
+            Console.WriteLine("-------------------------------------------------------------------------------------------");
+            Console.WriteLine("Method returns array of characters that are duplicated in input string");
+            Console.WriteLine("Input string: ");
+
+            string str4 = Console.ReadLine();
+
+            Console.WriteLine(Duplicate(str4));
             Console.ReadKey();
         }
         static bool Compare(string str1, string str2)
@@ -84,30 +91,44 @@ namespace lesson_7_strings
 
             return new string(charstr);
         }
-        static string Elem(string str)
+        static string DuplicateTemp(string str)
         {
-            string text = "пппприииветт"; //Входная строка
-            int Count = 0; //Количество букв
-            char PreCh = '\\'; //Предыдущий символ
-            foreach (char ch in text) //Для каждого сивола в строке - опорный символ
+
+            string strLow = str.ToLower();
+            string string2 = string.Empty;
+
+            for (int i = 0; i < strLow.Length; i++)
             {
-                foreach (char cha in text) //Проходим по всем символам
+
+                for (int j = 0; j < i; j++)
                 {
-                    if (cha != PreCh && cha == ch) //И если этот символ не равен предыдущему символу, и одновременно опорному символу
+
+                    if (strLow[i] == strLow[j])
                     {
-                        Count++; //Увеличиваем количество на 1
+                        string2 += strLow[j];
                     }
+
                 }
 
-                if (Count != 0) //Если количество не равно 0
-                {
-                    Console.WriteLine("Количество символов {0} = {1}", ch, Count); //Выводим опорный символ и количество его в строке
-                }
-
-                Count = 0; //Обнуляем количество
-                PreCh = ch; //Записываем в предыдущий символ текущий опорный символ
             }
-            return text;
+
+            return string2;
+        }
+        static string Duplicate(string str)
+        {
+            str = DuplicateTemp(str);
+            int i = 0;
+
+            while (true)
+            {
+                var tmp = str[i].ToString();
+                str = str.Replace(tmp, "");
+                str = str.Insert(i, tmp);
+                i++;
+                if (str.Length - 1 < i)
+                    break;
+            }
+            return str;
         }
     }
 }
